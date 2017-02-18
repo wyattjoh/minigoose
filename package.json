@@ -1,0 +1,15 @@
+{
+  "name": "minigoose",
+  "version": "1.0.0",
+  "description": "A mini no frills version of Mongoose which simply wraps the default mongo driver.",
+  "main": "lib/index.js",
+  "repository": "https://github.com/wyattjoh/minigoose",
+  "author": "Wyatt Johnson <wyattjoh@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pluralize": "^3.1.0"
+  },
+  "peerDependencies": {
+    "mongodb": "^2.2.24"
+  }
+}
