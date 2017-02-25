@@ -3,7 +3,7 @@
 # If you want Nodesource's container you would reference nodesource/node
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: node
+box: node:7
 
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
@@ -24,14 +24,14 @@ build:
     - script:
       name: set yarn cache
       code: |
-        export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
+        yarn config set cache-folder $WERCKER_CACHE_DIR/yarn
 
     - script:
       name: install dependencies
       code: |
-        HOME=$YARN_CACHE yarn
+        yarn
 
     - script:
       name: test
       code: |
-        HOME=$YARN_CACHE yarn test
+        yarn test
