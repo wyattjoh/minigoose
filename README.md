@@ -1,8 +1,45 @@
 # minigoose
 
-Minigoose serves as a minimal alternative to the fully featured Mongoose. This
-package only provides validation through a third party library (Joi) and uses +
-exposes the native mongo javascript driver.
+Minigoose serves as a minimal alternative to the fully featured
+[Mongoose](https://github.com/Automattic/mongoose). This package only provides
+validation through a third party library ([Joi](https://github.com/hapijs/joi))
+and uses + exposes the native
+[mongo javascript driver](https://mongodb.github.io/node-mongodb-native/).
+
+## Getting Started
+
+```bash
+npm install --save joi minigoose
+```
+
+First, you must create your model:
+
+```js
+const Joi = require('joi');
+const {Model, Schema} = require('minigoose');
+
+const UserModel = new Model('User', new Schema({
+  id: Joi.string().required(),
+  name: Joi.string().required(),
+  roles: Joi.string().valid(['ADMIN', 'MODERATOR']),
+  color: Joi.string().default('blue')
+}));
+```
+
+And that's pretty much it! You can add any form of validations by referencing
+the [Joi API](https://github.com/hapijs/joi/blob/v10.2.2/API.md). You can now
+create new model's via the new constructor:
+
+```js
+let user = new UserModel({
+  id: '2',
+  name: 'Wyatt',
+  roles: 'ADMIN'
+});
+```
+
+Refer to `lib/model.js` file for other operations you can do by calling the
+static methods on the Model.
 
 ## License
 
