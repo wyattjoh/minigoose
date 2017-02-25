@@ -1,5 +1,4 @@
-# minigoose
-
+# minigoose [![npm version](https://badge.fury.io/js/minigoose.svg)](https://badge.fury.io/js/minigoose) [![wercker status](https://app.wercker.com/status/b361990cc53ab372b64bd8243af1d807/s/master "wercker status")](https://app.wercker.com/project/byKey/b361990cc53ab372b64bd8243af1d807)
 Minigoose serves as a minimal alternative to the fully featured
 [Mongoose](https://github.com/Automattic/mongoose). This package only provides
 validation through a third party library ([Joi](https://github.com/hapijs/joi))

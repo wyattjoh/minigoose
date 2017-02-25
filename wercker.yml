@@ -1,0 +1,37 @@
+# This references the default nodejs container from
+# the Docker Hub: https://registry.hub.docker.com/_/node/
+# If you want Nodesource's container you would reference nodesource/node
+# Read more about containers on our dev center
+# http://devcenter.wercker.com/docs/containers/index.html
+box: node
+
+# You can also use services such as databases. Read more on our dev center:
+# http://devcenter.wercker.com/docs/services/index.html
+# services:
+    # - postgres
+    # http://devcenter.wercker.com/docs/services/postgresql.html
+
+    # - mongo
+    # http://devcenter.wercker.com/docs/services/mongodb.html
+
+build:
+  steps:
+    - script:
+      name: install yarn
+      code: |
+        npm install -g yarn
+
+    - script:
+      name: set yarn cache
+      code: |
+        export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
+
+    - script:
+      name: install dependencies
+      code: |
+        HOME=$YARN_CACHE yarn
+
+    - script:
+      name: test
+      code: |
+        HOME=$YARN_CACHE yarn test
