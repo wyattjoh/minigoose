@@ -1,6 +1,6 @@
-workflow "Lint and test" {
+workflow "Lint and Publish" {
   on = "push"
-  resolves = ["Build"]
+  resolves = ["Publish"]
 }
 
 action "Build" {
@@ -14,6 +14,7 @@ action "Lint" {
   args = "run lint"
 }
 
+# Filter for master branch
 action "Master" {
   needs = "Lint"
   uses = "actions/bin/filter@master"
@@ -21,8 +22,8 @@ action "Master" {
 }
 
 action "Publish" {
-  uses = "actions/npm@master"
   needs = "Master"
+  uses = "actions/npm@master"
   args = "publish"
+  secrets = ["NPM_AUTH_TOKEN"]
 }
-
