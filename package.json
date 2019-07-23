@@ -1,6 +1,6 @@
 {
   "name": "minigoose",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A mini no frills version of Mongoose which simply wraps the default mongo driver.",
   "main": "lib/index.js",
   "repository": "https://github.com/wyattjoh/minigoose",
